@@ -90,16 +90,6 @@ public class TokenStream {
 			t.setValue(t.getValue() + nextChar);
 			switch (nextChar) {
 			// TODO TO BE COMPLETED WHERE NEEDED
-			case ':':
-				nextChar = readChar();
-				if (nextChar == '=') {
-					t.setValue(t.getValue() + nextChar);
-					nextChar = readChar();
-					return t;
-				} else {
-					t.setType("Other");
-				}
-				return t;
 			case '<':
 				// <=
 				nextChar = readChar();
@@ -159,6 +149,16 @@ public class TokenStream {
 				// Look for &&
 				nextChar = readChar();
 				if (nextChar == '&') {
+					t.setValue(t.getValue() + nextChar);
+					nextChar = readChar();
+					return t;
+				} else {
+					t.setType("Other");
+				}
+				return t;
+			case ':':
+				nextChar = readChar();
+				if (nextChar == '=') {
 					t.setValue(t.getValue() + nextChar);
 					nextChar = readChar();
 					return t;
