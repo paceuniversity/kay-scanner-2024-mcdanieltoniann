@@ -95,19 +95,25 @@ public class TokenStream {
 				if (nextChar == '=') {
 					t.setValue(t.getValue() + nextChar);
 					nextChar = readChar();
+					return t;
+				} else {
+					t.setValue("<");
 				}
 				return t;
+				
 			case '>':
 				// >=
 				nextChar = readChar();
 				if (nextChar == '=') {
 					t.setValue(t.getValue() + nextChar);
 					nextChar = readChar();
+					return t;
+				} else {
+					t.setValue(">");
 				}
 				return t;
 			case '=':
 				// ==
-				// if = it should return other, if == returns operators
 				nextChar = readChar();
 				if (nextChar == '=') {
 					t.setValue(t.getValue() + nextChar);
@@ -123,8 +129,12 @@ public class TokenStream {
 				if (nextChar == '=') {
 					t.setValue(t.getValue() + nextChar);
 					nextChar = readChar();
+					return t;
+				} else {
+					t.setValue("!");
 				}
 				return t;
+
 			case '|':
 				// Look for ||
 				nextChar = readChar();
@@ -272,7 +282,7 @@ public class TokenStream {
 
 	private boolean isDigit(char c) {
 		// TODO TO BE COMPLETED
-		return (c == '0' || c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7' || c == '8' || c == '9');
+		return(c >= '0' &&  c <= '9');
 	}
 
 	public boolean isEndofFile() {
