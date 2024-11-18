@@ -65,7 +65,7 @@ public class TokenStream {
 				// skip rest of line - it's a comment.
 				// TODO TO BE COMPLETED
 				// look for <cr>, <lf>, <ff>
-				while (nextChar != '\n' && nextChar != '\r' && !isEof) {
+				while (nextChar != '\n' && !isEof) {
 					nextChar = readChar();
 					
 				}
