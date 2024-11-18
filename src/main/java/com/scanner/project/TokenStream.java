@@ -60,9 +60,11 @@ public class TokenStream {
 				while(!isEndOfLine(nextChar) && !isEof) {
 					nextChar = readChar();
 				}
-				if (isEof) { // Break out if EOF is reached within a comment
-					skipWhiteSpace();
+				skipWhiteSpace();
+			if (isEof) {
+					return null; 
 				}
+
 				// look for <cr>, <lf>, <ff>
 			} else {
 				// A slash followed by anything else must be an operator.
